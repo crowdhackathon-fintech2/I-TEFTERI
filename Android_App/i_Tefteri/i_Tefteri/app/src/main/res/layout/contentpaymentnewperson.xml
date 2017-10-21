@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"-->
+<!--android:orientation="vertical" android:layout_width="match_parent"-->
+<!--android:layout_height="match_parent">-->
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_height="wrap_content" android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:id="@+id/MyTable"
+    android:clickable="true">
+
+    <TableRow android:layout_width="fill_parent"
+        android:id="@+id/TableRow01"
+        android:layout_height="wrap_content"
+        android:clickable="true">
+
+
+
+        <TextView
+            android:id="@+id/PersonID"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="id" android:textStyle="bold"
+            android:gravity="center"
+            android:layout_weight="1"
+            android:typeface="monospace"
+            android:height="40sp"
+            android:clickable="true"
+            android:visibility="invisible"/>
+        <TextView
+            android:id="@+id/Person"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="id" android:textStyle="bold"
+            android:gravity="center"
+            android:layout_weight="1"
+            android:typeface="monospace"
+            android:height="40sp"
+            android:clickable="true"
+            />
+        <TextView
+            android:id="@+id/AccountID"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="id" android:textStyle="bold"
+            android:gravity="center"
+            android:layout_weight="1"
+            android:typeface="monospace"
+            android:height="40sp"
+            android:clickable="true"
+            android:visibility="invisible"/>
+
+
+    </TableRow>
+
+    <!--<TableRow android:layout_height="wrap_content"-->
+    <!--android:layout_width="fill_parent">-->
+
+
+
+    <!--<TextView android:layout_height="wrap_content"-->
+    <!--android:layout_width="fill_parent"-->
+    <!--android:layout_weight="1"-->
+    <!--android:textColor="#FFFFFF"-->
+    <!--android:gravity="right"-->
+    <!--android:id="@+id/description"-->
+    <!--android:text="description"-->
+    <!--android:height="20sp" />-->
+    <!--</TableRow>-->
+</TableLayout>
+    <!--</LinearLayout>-->

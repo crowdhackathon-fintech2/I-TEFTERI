@@ -1,0 +1,4 @@
+D:\MyCode\i-Tefteri\DBLibrary\DBLibrary\bin\Release\DBLibrary.dll
+D:\MyCode\i-Tefteri\DBLibrary\DBLibrary\bin\Release\DBLibrary.pdb
+D:\MyCode\i-Tefteri\DBLibrary\DBLibrary\obj\Release\DBLibrary.dll
+D:\MyCode\i-Tefteri\DBLibrary\DBLibrary\obj\Release\DBLibrary.pdb

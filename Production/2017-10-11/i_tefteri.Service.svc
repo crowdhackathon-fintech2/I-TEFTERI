@@ -1,0 +1,1 @@
+<%@ ServiceHost Service="i_tefteri.Service" %>

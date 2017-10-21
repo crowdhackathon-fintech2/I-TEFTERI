@@ -1,0 +1,5 @@
+D:\MyCode\i-Tefteri\DBLibrary\DBLibrary\bin\Debug\DBLibrary.dll
+D:\MyCode\i-Tefteri\DBLibrary\DBLibrary\bin\Debug\DBLibrary.pdb
+D:\MyCode\i-Tefteri\DBLibrary\DBLibrary\obj\Debug\DBLibrary.dll
+D:\MyCode\i-Tefteri\DBLibrary\DBLibrary\obj\Debug\DBLibrary.pdb
+D:\MyCode\i-Tefteri\DBLibrary\DBLibrary\obj\Debug\DBLibrary.csprojResolveAssemblyReference.cache

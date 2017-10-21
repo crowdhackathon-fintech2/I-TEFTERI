@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.java.main.i_tefteri">
+
+    <!-- To auto-complete the email text field in the login form with the user's emails -->
+    <!-- <uses-permission android:name="android.permission.GET_ACCOUNTS" /> -->
+    <!-- <uses-permission android:name="android.permission.READ_PROFILE" /> -->
+    <!-- <uses-permission android:name="android.permission.READ_CONTACTS" /> -->
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.READ_SMS" />
+    <uses-permission android:name="android.permission.READ_PHONE_NUMBERS" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@drawable/splash"
+        android:label="i-tefteri"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme"
+        android:name=".MyMainObject">
+        <activity
+            android:name=".MainActivity"
+            android:label="i-tefteri Κεντρικό Μενού"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".SingInActivity"
+            android:label="Sign In to i-tefteri" />
+        <activity
+            android:name=".SplashActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:label=""
+            android:theme="@style/FullscreenTheme">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".AccountActivity"
+            android:label="@string/title_activity_account"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".RegisterPhoneActivity"
+            android:label="@string/title_activity_register_phone"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".PaymentsActivity"
+            android:label="Πληρωμές"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".newPaymentSelectPersonActivity"
+            android:label="Επιλογή Ατόμου"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".ActoualPaymentActivity"
+            android:label="@string/title_activity_actoual_payment"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".CollectMenuActivity"
+            android:label="@string/title_activity_collect_menu"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+    </application>
+
+</manifest>

@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "i-tefteri-Rest", "RestService\i-tefteri-Rest\i-tefteri-Rest.csproj", "{C8C6572C-26DE-4AC6-A70D-F30A54087337}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DBLibrary", "DBLibrary\DBLibrary\DBLibrary.csproj", "{325225FF-CD3D-455C-8B8D-F2A586008F1A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C8C6572C-26DE-4AC6-A70D-F30A54087337}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C8C6572C-26DE-4AC6-A70D-F30A54087337}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C8C6572C-26DE-4AC6-A70D-F30A54087337}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C8C6572C-26DE-4AC6-A70D-F30A54087337}.Release|Any CPU.Build.0 = Release|Any CPU
+		{325225FF-CD3D-455C-8B8D-F2A586008F1A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{325225FF-CD3D-455C-8B8D-F2A586008F1A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{325225FF-CD3D-455C-8B8D-F2A586008F1A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{325225FF-CD3D-455C-8B8D-F2A586008F1A}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

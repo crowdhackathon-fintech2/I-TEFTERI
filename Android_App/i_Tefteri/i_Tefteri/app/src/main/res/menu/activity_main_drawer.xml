@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_button1"
+            android:title="@string/title1_main_button" />
+        <item
+            android:id="@+id/nav_button2"
+            android:title="@string/title2_main_button" />
+        <item
+            android:id="@+id/nav_button3"
+            android:title="@string/title3_main_button" />
+        <item
+            android:id="@+id/nav_button4"
+            android:title="@string/title4_main_button" />
+        <item
+            android:id="@+id/nav_button5"
+            android:title="@string/title5_main_button" />
+    </group>
+
+    <!--<item android:title="Communicate">-->
+        <!--<menu>-->
+            <!--<item-->
+                <!--android:id="@+id/nav_share"-->
+                <!--android:icon="@drawable/ic_menu_share"-->
+                <!--android:title="Share" />-->
+            <!--<item-->
+                <!--android:id="@+id/nav_send"-->
+                <!--android:icon="@drawable/ic_menu_send"-->
+                <!--android:title="Send" />-->
+        <!--</menu>-->
+    <!--</item>-->
+
+</menu>
