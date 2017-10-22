@@ -26,6 +26,7 @@ namespace i_tefteri_Rest.Controllers
         // GET: api/Users/5
         public List<Person> Get(int id)
         {
+            System.Net.Http.Headers.HttpRequestHeaders headers = this.Request.Headers;
             DBManage MyDBManager = new DBManage();
             SqlCommand Command = null;
             SqlDataReader Reader = null;
@@ -39,22 +40,26 @@ namespace i_tefteri_Rest.Controllers
             {
                 try
                 {
-                    
+
+                    if (headers.Contains("Currentuser"))
+                    {
+                        string user = headers.GetValues("Currentuser").First();
+                    }
                     MyDBManager.ConOpen();
                     Command = new SqlCommand();
                     Command.CommandText = SqlString;
                     Command.CommandType = System.Data.CommandType.StoredProcedure;
-                    //Command.Parameters.Add("@What2Do", SqlDbType.VarChar, 20);
+                    Command.Parameters.Add("@What2Do", SqlDbType.VarChar, 50);
                     //Command.Parameters.Add("@Mobile_Num", SqlDbType.VarChar, 12);
-                    //Command.Parameters["@What2Do"].Value = "Find Person";
+                    Command.Parameters["@What2Do"].Value = "All Person";
                     //Command.Parameters["@Mobile_Num"].Value = id;
                     Reader = MyDBManager.ExecuteReader(Command);
-                    
-                    while (Reader.Read()){
+
+                    while (Reader.Read()) {
                         Person MyPerson = new Person();
-                        MyPerson.UserID= Convert.ToInt32(Reader["UserID"]);
+                        MyPerson.UserID = Convert.ToInt32(Reader["UserID"]);
                         MyPerson.iBankuserID = Reader["iBankuserID"].ToString();
-                        MyPerson.BASIKOS_LOGAR= Reader["BASIKOS_LOGAR"].ToString();
+                        MyPerson.BASIKOS_LOGAR = Reader["BASIKOS_LOGAR"].ToString();
                         Person.Add(MyPerson);
                         MyPerson = null;
                     }
@@ -68,7 +73,7 @@ namespace i_tefteri_Rest.Controllers
                     //var json = jsonSerialiser.Serialize(Person);
                     return Person;//JsonConvert.SerializeObject(Person);
                 }
-                catch(Exception ex)
+                catch (Exception ex)
                 {
                     Person MyPerson = new Person();
                     RecsAff = Write2LogFile(MyDBManager, "Controller=Users, " + "Error: " + ex.Message, 1);
@@ -81,8 +86,55 @@ namespace i_tefteri_Rest.Controllers
             }
             else
             {
+                try
+                {
+                    
+                    string Currentuser = string.Empty;
+                    if (headers.Contains("Currentuser"))
+                    {
+                        Currentuser = headers.GetValues("Currentuser").First();
+                    }
+                    MyDBManager.ConOpen();
+                Command = new SqlCommand();
+                Command.CommandText = SqlString;
+                Command.CommandType = System.Data.CommandType.StoredProcedure;
+                Command.Parameters.Add("@What2Do", SqlDbType.VarChar, 50);
+                //Command.Parameters.Add("@Mobile_Num", SqlDbType.VarChar, 12);
+                Command.Parameters["@What2Do"].Value = Currentuser;
+                //Command.Parameters["@Mobile_Num"].Value = id;
+                Reader = MyDBManager.ExecuteReader(Command);
+
+                while (Reader.Read())
+                {
+                    Person MyPerson = new Person();
+                    MyPerson.UserID = Convert.ToInt32(Reader["UserID"]);
+                    MyPerson.iBankuserID = Reader["iBankuserID"].ToString();
+                    MyPerson.BASIKOS_LOGAR = Reader["BASIKOS_LOGAR"].ToString();
+                    Person.Add(MyPerson);
+                    MyPerson = null;
+                }
+                Reader.Close();
+                Reader = null;
+                Command = null;
+                Write2LogFile(MyDBManager, "Controller=Users, " + "Get 1 Active Users", 1);
+                MyDBManager.ConClose();
+                MyDBManager = null;
+                //var jsonSerialiser = new JavaScriptSerializer();
+                //var json = jsonSerialiser.Serialize(Person);
+                return Person;//JsonConvert.SerializeObject(Person);
+            
+            }
+                catch (Exception ex)
+            {
+                Person MyPerson = new Person();
+                RecsAff = Write2LogFile(MyDBManager, "Controller=Users, " + "Error: " + ex.Message, 1);
+                MyDBManager.ConClose();
+                MyDBManager = null;
+                MyPerson.iBankuserID = "Error";
+                Person.Add(MyPerson);
                 return Person;
             }
+        }
         }
 
         //// POST: api/Users

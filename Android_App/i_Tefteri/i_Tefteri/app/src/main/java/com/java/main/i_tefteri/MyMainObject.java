@@ -5,11 +5,13 @@ import android.app.Application;
 import android.content.Context;
 
 public class MyMainObject extends Application {
+    private String _userid;
     private String _bank_id;
     private String _account_id;
     private String _IBAN;
     private String _Owner_Name;
     private double _Amount;
+    private String _UserName;
 //    private static MyMainObject instance;
     //@Override
 
@@ -27,6 +29,13 @@ public class MyMainObject extends Application {
 ////        instance = this;
 //    }
 
+    public void set_userid(String value){
+        _userid=value;
+    }
+
+    public String get_userid(){
+        return _userid;
+    }
 
     public void set_bank_id(String value){
         _bank_id=value;
@@ -59,12 +68,21 @@ public class MyMainObject extends Application {
     public String get_Owner_Name(){
         return _Owner_Name;
     }
+
     public void set_Amount(double value){
         _Amount=value;
     }
 
     public double get_Amount(){
         return _Amount;
+    }
+
+    public void setUserName(String value){
+        _UserName=value;
+    }
+
+    public String get_UserName(){
+        return _UserName;
     }
 }
 

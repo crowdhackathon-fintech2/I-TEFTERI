@@ -39,11 +39,29 @@ public class PaymentsActivity extends AppCompatActivity {
             }
         });
 
+
+        Button BtnPendings=(Button) findViewById(R.id.BtnNewPayment2);
+
+        BtnPendings.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Pendings();
+            }
+        });
+    }
+
+    private void Pendings(){
+        Intent NewPendingsIntent = new Intent(PaymentsActivity.this, PaymentsPendingsActivity.class);
+        startActivity(NewPendingsIntent);
+
     }
 
     private void Select_Person(){
-        Intent SelectPersonIntent = new Intent(this, newPaymentSelectPersonActivity.class);
-        startActivity(SelectPersonIntent);
+        Intent MyIntent=new Intent(PaymentsActivity.this, newPaymentSelectPersonActivity.class);
+        MyIntent.putExtra("KEY_Whois","Payment");
+        startActivity(MyIntent);
+//        Intent SelectPersonIntent = new Intent(this, newPaymentSelectPersonActivity.class);
+//        startActivity(SelectPersonIntent);
         //startActivity(new Intent(PaymentsActivity.this, ActoualPaymentActivity.class).putExtra("KEY_PersonName",Person.GetPersonName()));
     }
 

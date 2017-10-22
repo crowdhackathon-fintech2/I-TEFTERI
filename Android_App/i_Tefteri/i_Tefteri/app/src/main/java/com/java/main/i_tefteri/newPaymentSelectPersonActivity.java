@@ -33,6 +33,7 @@ public class newPaymentSelectPersonActivity extends AppCompatActivity {
     private List<MyPerson> Persons=new ArrayList<>();
     private ListView PersonList;
     private int SelectItem=-1;
+    private String WhoCalls="";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,6 +53,7 @@ public class newPaymentSelectPersonActivity extends AppCompatActivity {
         PersonList = (ListView) findViewById(R.id.PersonList);
         fillMyList();
 
+        WhoCalls=getIntent().getStringExtra("KEY_Whois");
 
 
     }
@@ -62,11 +64,20 @@ public class newPaymentSelectPersonActivity extends AppCompatActivity {
         if(SelectItem!=-1){
             MyPerson SelectedPerson=(MyPerson) PersonList.getAdapter().getItem(SelectItem);
 
-            Intent MyIntent=new Intent(newPaymentSelectPersonActivity.this, ActoualPaymentActivity.class);
-            MyIntent.putExtra("KEY_PersonName",SelectedPerson.GetPersonName());
-            MyIntent.putExtra("KEY_PersonID",SelectedPerson.GetPersonID());
-            MyIntent.putExtra("KEY_AccountID",SelectedPerson.GetPersonAccountID());
-            startActivity(MyIntent);
+            if(WhoCalls.equals("Payment")){
+                Intent MyIntent=new Intent(newPaymentSelectPersonActivity.this, ActoualPaymentActivity.class);
+                MyIntent.putExtra("KEY_PersonName",SelectedPerson.GetPersonName());
+                MyIntent.putExtra("KEY_PersonID",SelectedPerson.GetPersonID());
+                MyIntent.putExtra("KEY_AccountID",SelectedPerson.GetPersonAccountID());
+                startActivity(MyIntent);
+            }
+            else if(WhoCalls.equals("Collection")){
+                Intent MyIntent=new Intent(newPaymentSelectPersonActivity.this, ActualCollectionActivity.class);
+                MyIntent.putExtra("KEY_PersonName",SelectedPerson.GetPersonName());
+                MyIntent.putExtra("KEY_PersonID",SelectedPerson.GetPersonID());
+                MyIntent.putExtra("KEY_AccountID",SelectedPerson.GetPersonAccountID());
+                startActivity(MyIntent);
+            }
 
             //Intent PersonIntent = new Intent(this, ActoualPaymentActivity.class);
             //startActivity(PersonIntent);
@@ -79,6 +90,7 @@ public class newPaymentSelectPersonActivity extends AppCompatActivity {
         String MyResponse;
         HttpURLCon Con = new  HttpURLCon();
         Con.SetUrl("http://10.35.251.60:8088/itefteri/Users/-1");
+        Con.add_Headers("user","test");
         Con.sendGet();
         if(Con.GetReturnCode()==200){
             MyResponse=Con.GetReturn();

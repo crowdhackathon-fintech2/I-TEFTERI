@@ -168,7 +168,10 @@ public class SingInActivity extends AppCompatActivity implements LoaderCallbacks
         Con.add_Headers("provider","NBG");
         Con.add_Headers("provider_id","NBG.gr");
         Con.add_Headers("sandbox_id","i_tefteri_sandbox");
-        Con.add_Headers("user_id","c060ae72-994c-40b5-82eb-0403d50f8600");
+        if(UserName.getText().toString().equals("User1"))
+            Con.add_Headers("user_id","c060ae72-994c-40b5-82eb-0403d50f8600");
+        else
+            Con.add_Headers("user_id","4c7a70df-5a9c-4cc4-821b-32a95355b396");
         Con.add_Headers("username",UserName.getText().toString());
         Con.sendGet();
 
@@ -188,6 +191,7 @@ public class SingInActivity extends AppCompatActivity implements LoaderCallbacks
                 String IBAN="";
                 MyMainObject MainObject = ((MyMainObject) this.getApplication());
 
+                MainObject.setUserName(UserName.getText().toString());
 
                 MainObject.set_account_id(Account_ID);
                 MainObject.set_bank_id(Bank_ID);
@@ -211,21 +215,21 @@ public class SingInActivity extends AppCompatActivity implements LoaderCallbacks
 //                Con.add_Headers("username",UserName.getText().toString());
                 Con.sendGet();
                 MyResponse=Con.GetReturn();
-                if(Con.GetReturnCode()==200){
-                    if(MyResponse.substring(0,1)=="[")
-                        obj = new JSONObject(MyResponse.substring(1,MyResponse.length()-1));
+                if(Con.GetReturnCode()==200) {
+                    if (MyResponse.substring(0, 1) == "[")
+                        obj = new JSONObject(MyResponse.substring(1, MyResponse.length() - 1));
                     else
                         obj = new JSONObject(MyResponse);
 
-                    arr=null;
+                    arr = null;
                     arr = obj.getJSONArray("owners");
-                    for (int i = 0; i < arr.length(); i++)
-                    {
+                    for (int i = 0; i < arr.length(); i++) {
                         MainObject.set_Owner_Name(arr.getJSONObject(i).getString("display_name"));
+
 
                     }
 
-                    arr=null;
+                    arr = null;
 
 //                    arr = obj.getJSONArray("balance");
 //                    for (int i = 0; i < arr.length(); i++)
@@ -233,9 +237,27 @@ public class SingInActivity extends AppCompatActivity implements LoaderCallbacks
 //                        MainObject.set_Amount(Double.parseDouble((arr.getJSONObject(i).getString("amount"))));
 //
 //                    }
-                    MainObject.set_Amount(Double.parseDouble(obj.getJSONObject("balance").getString("amount")));
-                }
 
+                    MainObject.set_Amount(Double.parseDouble(obj.getJSONObject("balance").getString("amount")));
+
+
+                    Con=null;
+                    Con = new HttpURLCon();
+                    Con.SetUrl("http://10.35.251.60:8088/itefteri/Users/1");
+                    Con.add_Headers("Currentuser",UserName.getText().toString());
+                    Con.sendGet();
+                    if (Con.GetReturnCode() == 200) {
+                        MyResponse = Con.GetReturn();
+                        JSONArray jsonarray = new JSONArray(MyResponse);
+                        for (int i = 0; i < jsonarray.length(); i++) {
+                            JSONObject jsonobject = jsonarray.getJSONObject(i);
+
+                            MainObject.set_userid(jsonobject.getString("UserID"));
+                        }
+
+
+                    }
+                }
 
 
 

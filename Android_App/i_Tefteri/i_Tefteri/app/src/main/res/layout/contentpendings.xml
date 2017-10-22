@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!--<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"-->
+<!--android:layout_width="match_parent"-->
+<!--android:layout_height="match_parent"-->
+<!--android:fillViewport="true">-->
+
+<!--<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"-->
+<!--android:orientation="vertical"-->
+<!--android:layout_height="wrap_content"-->
+<!--android:layout_width="match_parent"-->
+<!--android:id="@+id/MyTable"-->
+<!--android:clickable="true"-->
+<!--&gt;-->
+<!--<ScrollView-->
+<!--android:layout_width="match_parent"-->
+<!--android:layout_height="match_parent">-->
+
+<!--<TableRow-->
+<!--android:layout_width="match_parent"-->
+<!--android:id="@+id/TableRow01"-->
+<!--android:layout_height="wrap_content"-->
+<!--android:clickable="true"-->
+<!--&gt;-->
+<!--<ScrollView-->
+<!--android:layout_width="match_parent"-->
+<!--android:layout_height="wrap_content"-->
+<!--android:scrollbars="none"-->
+<!--android:layout_weight="1">-->
+
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:layout_marginTop="200dp"
+    android:layout_weight="1">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+
+        >
+
+        <TextView
+            android:id="@+id/PersonName"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:layout_gravity="left"
+            android:layout_weight="1"
+            android:textColor="@color/myBlack"
+            android:textStyle="bold"
+
+            android:clickable="true"
+
+
+            />
+        <TextView
+            android:id="@+id/AmountCollection"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:textColor="@color/myBlack"
+            android:gravity="right"
+            android:text="id"
+            android:textStyle="bold"
+            android:layout_weight="1"
+            />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        >
+
+        <TextView
+            android:id="@+id/LabelTransDate"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:text="ημ/νία συναλλαγής"
+            android:textColor="@color/myBlack"
+            android:gravity="left"
+            android:textStyle="bold"
+
+            android:layout_weight="1"
+
+
+            />
+        <TextView
+            android:id="@+id/AmountTransDate"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:textStyle="bold"
+            android:gravity="right"
+            android:layout_weight="1"
+            android:textColor="@color/myBlack"
+
+
+            />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        >
+
+        <TextView
+            android:id="@+id/LabelActualDate"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:text="ημ/νία εκτέλεσης"
+            android:textColor="@color/myBlack"
+            android:gravity="left"
+            android:textStyle="bold"
+
+            android:layout_weight="1"
+
+
+            />
+        <TextView
+            android:id="@+id/ActualDate"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:textStyle="bold"
+            android:gravity="right"
+            android:textColor="@color/myBlack"
+            android:layout_weight="1"
+
+
+            />
+    </LinearLayout>
+
+
+
+
+</LinearLayout>
+    <!--</ScrollView>-->
+    <!--</TableRow>-->
+
+    <!--&lt;!&ndash;</ScrollView>&ndash;&gt;-->
+    <!--</TableLayout>-->
+
+    <!--</ScrollView>-->

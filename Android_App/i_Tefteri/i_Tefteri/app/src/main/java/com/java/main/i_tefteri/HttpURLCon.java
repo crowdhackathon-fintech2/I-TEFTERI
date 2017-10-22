@@ -15,6 +15,7 @@ import java.util.List;
 
 import android.os.AsyncTask;
 import android.preference.PreferenceActivity;
+import android.util.Log;
 import android.widget.Toast;
 
 import junit.framework.Test;
@@ -31,7 +32,16 @@ public class HttpURLCon {
     private String _Return;
     private int _ReturnCode;
     private String _Url;
+    private String _Body;
     private List<MyHeader> Headers = new ArrayList<>();
+
+    public void set_Body(String value){
+        _Body=value;
+    }
+
+    public String get_Body(){
+        return _Body;
+    }
 
     public void SetUrl(String value) {
         _Url = value;
@@ -152,7 +162,8 @@ public class HttpURLCon {
                         out.write("Resource content");
                         out.close();
                         httpCon.getInputStream();
-                        _Return = String.valueOf(httpCon.getResponseCode());
+                        _ReturnCode= httpCon.getResponseCode();
+                        //_Return = String.valueOf(httpCon.getResponseCode());
                     } catch (Exception ex) {
                         _Return = ex.getMessage();
                     } finally {
@@ -168,7 +179,7 @@ public class HttpURLCon {
     }
 
     // HTTP POST request
-    public void sendPost() {
+    public void sendPost(final String UserID,final String User_Name,final String BankID,final String AccountID,final String IBAN_Politi,final String Amount) {
         try {
             new AsyncTask<Void, Void, Void>() {
                 @Override
@@ -181,19 +192,23 @@ public class HttpURLCon {
                 protected Void doInBackground(Void... params) {
                     try {
 
-
-//                        HttpPost httpPost = new HttpPost("https://apis.nbg.gr/public/nbgapis/obp/v3.0.1/banks/DB173089-A8FE-43F1-8947-F1B2A8699829/accounts/33491949-04d8-440b-8b98-db30afa14585/owner/transaction-request-types/sepa/transaction-requests");
+//                        HttpPost httpPost = new HttpPost(_Url);
 //                        httpPost.setEntity(new StringEntity("{\"to\":{\"iban\":\"GR4501101030000010348012377\"},\"charge_policy\":\"OUR\",\"value\":{\"currency\":\"EUR\",\"amount\":1},\"description\":\"tes22t\"}"));
-//                        httpPost.setHeader("Accept", "application/json");
-//                        httpPost.setHeader("Content-type", "application/json");
-//                        httpPost.setHeader("sandbox_id", "darasgiannis");
-//                        httpPost.setHeader("application_id", "testg");
-//                        httpPost.setHeader("user_id", "c060ae72-994c-40b5-82eb-0403d50f8600");
-//                        httpPost.setHeader("username", "User1");
-//                        httpPost.setHeader("provider_id", "NBG.gr");
-//                        httpPost.setHeader("provider", "NBG");
 
-//                        HttpResponse resp = new DefaultHttpClient().execute(httpPost);
+                        HttpPost httpPost = new HttpPost("https://apis.nbg.gr/public/nbgapis/obp/v3.0.1/banks/" + BankID +"/accounts/" + AccountID + "/owner/transaction-request-types/sepa/transaction-requests");
+                        httpPost.setEntity(new StringEntity("{\'to\':{\"iban\':\'" + IBAN_Politi + "'\'},\'charge_policy\':\'OUR\',\'value\':{\'" + Amount + "'\':\'EUR\',\'amount\':1},\'description\':\'tes22t\'}"));
+                        httpPost.setHeader("Accept", "application/json");
+                        httpPost.setHeader("Content-type", "application/json");
+                        httpPost.setHeader("sandbox_id", "i_tefteri_sandbox");
+                        httpPost.setHeader("application_id", "i_tefteri_application_id");
+
+                        httpPost.setHeader("user_id", UserID);
+                        httpPost.setHeader("username", User_Name);
+                        httpPost.setHeader("provider_id", "NBG.gr");
+                        httpPost.setHeader("provider", "NBG");
+
+                        HttpResponse resp = new DefaultHttpClient().execute(httpPost);
+                        _Return=resp.toString();
                         //Log.d("tag",resp.toString());
                     } catch (Exception ex) {
                         _Return = ex.getMessage();

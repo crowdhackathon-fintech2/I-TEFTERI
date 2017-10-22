@@ -62,6 +62,8 @@
         <item>κάθε έτος</item>
     </string-array>
     <string name="title_activity_collect_menu">εισπράξεις</string>
+    <string name="title_activity_actual_collection">καταχώρηση είσπραξης</string>
+    <string name="title_activity_payments_pendings">επιλογή εκκρεμότητας</string>
 
 
 </resources>
